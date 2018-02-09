@@ -43,9 +43,6 @@ RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/reposit
 	pcre \
         && rm -rf /var/cache/apk/* 
 
-#Add www-data user and group with IDs 2500
-RUN addgroup -g 2500 -S www-data \
-        && adduser -u 2500 -S www-data -h /sbin/nologin -G www-data 
 
 #Install composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
@@ -56,4 +53,4 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 
 RUN apk del wget
 
-CMD ["php7.0-fpm", "-F"]
+CMD ["php-fpm7.0", "-F"]
