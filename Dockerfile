@@ -54,7 +54,6 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 
 RUN apk del wget
 
-ADD entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh
-
+ADD entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 CMD ["php-fpm7.0", "-F"]
