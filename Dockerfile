@@ -54,6 +54,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 
 RUN adduser deploy -s /bin/sh -G www-data -u 2500 -D \
 && mkdir /home/deploy/.composer
+&& chown deploy:www-data /home/deploy/.composer
 
 RUN apk del wget
 
