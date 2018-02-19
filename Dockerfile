@@ -58,7 +58,4 @@ RUN adduser deploy -s /bin/sh -G www-data -u 2500 -D \
 
 RUN apk del wget
 
-# Entrypoint
-ADD entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
 CMD ["php-fpm7.0", "-F"]
