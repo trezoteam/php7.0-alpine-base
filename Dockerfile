@@ -52,6 +52,8 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
         && php -r "unlink('composer-setup.php');" \
         && mv composer.phar /usr/local/bin/composer
 
+RUN adduser deploy -s /bin/sh -G www-data -u 2500 -D
+
 RUN apk del wget
 
 CMD ["php-fpm7.0", "-F"]
