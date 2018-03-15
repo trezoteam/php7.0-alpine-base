@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM alpine:3.7
 
 #Add PHP.earth repository
 RUN apk add --no-cache wget ca-certificates git \
@@ -6,8 +6,7 @@ RUN apk add --no-cache wget ca-certificates git \
 && echo "https://repos.php.earth/alpine/v3.7" >> /etc/apk/repositories
 
 #Install php 7.0, FPM and extensions
-RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories && \
-    apk --update add \
+RUN apk --update --no-cache add \
         php7.0 \
         php7.0-bcmath \
         php7.0-dom \
@@ -55,5 +54,6 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 RUN adduser deploy -s /bin/sh -G www-data -u 2500 -D
 
 RUN apk del wget
+
 
 CMD ["php-fpm7.0", "-F"]
