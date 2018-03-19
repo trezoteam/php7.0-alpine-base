@@ -1,7 +1,7 @@
 FROM alpine:3.7
 
 #Add PHP.earth repository
-RUN apk add --no-cache wget ca-certificates git \
+RUN apk add --no-cache wget ca-certificates git openssh-client \
 && wget -O /etc/apk/keys/phpearth.rsa.pub https://repos.php.earth/alpine/phpearth.rsa.pub \
 && echo "https://repos.php.earth/alpine/v3.7" >> /etc/apk/repositories
 
