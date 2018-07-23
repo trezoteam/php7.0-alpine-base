@@ -1,5 +1,7 @@
 FROM alpine:3.7
 
+RUN echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf && sysctl -p
+
 #Add PHP.earth repository
 RUN apk add --no-cache wget ca-certificates git openssh-client \
 && wget -O /etc/apk/keys/phpearth.rsa.pub https://repos.php.earth/alpine/phpearth.rsa.pub \
